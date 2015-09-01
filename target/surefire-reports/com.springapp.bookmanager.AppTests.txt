@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.springapp.bookmanager.AppTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.221 sec <<< FAILURE!
-simple(com.springapp.bookmanager.AppTests)  Time elapsed: 0.012 sec  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.992 sec <<< FAILURE!
+simple(com.springapp.bookmanager.AppTests)  Time elapsed: 0.063 sec  <<< ERROR!
 java.lang.NoClassDefFoundError: javax/servlet/SessionCookieConfig
 	at org.springframework.test.context.web.AbstractGenericWebContextLoader.configureWebResources(AbstractGenericWebContextLoader.java:199)
 	at org.springframework.test.context.web.AbstractGenericWebContextLoader.loadContext(AbstractGenericWebContextLoader.java:126)

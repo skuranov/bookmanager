@@ -4,6 +4,7 @@ import com.firstspringapp.bookmanager.domain.Book;
 import com.firstspringapp.bookmanager.repository.BookRepository;
 import com.firstspringapp.bookmanager.validation.BookValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -34,11 +35,13 @@ public class BookController {
         return "index";
     }
     @RequestMapping(value = "addBook", method = RequestMethod.GET)
+    @PreAuthorize("isAuthenticated()")
     public String addBook(Model model){
         model.addAttribute("book",new Book());
         return "addBook";
     }
     @RequestMapping(value = "addBook", method = RequestMethod.POST)
+    @PreAuthorize("isAuthenticated()")
     public String addBook(@ModelAttribute("book") Book book, BindingResult bindingResult){
         this.bookValidator.validate(book,bindingResult);
         if (bindingResult.hasErrors()){
@@ -48,6 +51,7 @@ public class BookController {
         return "redirect:/";
     }
     @RequestMapping(value = "deleteBook/{id}", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('admin')")
     public String deleteBook(@PathVariable Integer id){
         this.bookRepository.removeBook(id);
         return "redirect:/";
